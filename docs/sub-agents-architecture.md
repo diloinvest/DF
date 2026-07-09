@@ -120,3 +120,12 @@ this is the five-specialist, always-on structure:
 Operator-path agents typically run as their own Claude Code sessions with
 their own CLAUDE.md, skills, and connectors — on a Mac Mini server, a VPS, or
 a laptop with energy saver disabled.
+
+## Practical Setup Options, Easiest to Hardest
+
+- **Easiest:** separate Projects on Claude.ai — one Project per agent. You
+  manually pick which one to use.
+- **Middle:** Claude Code with role-specific CLAUDE.md files in different
+  folders. Spawn sub-agents from a master orchestrator session.
+- **Advanced:** always-on agents on a Mac Mini or VPS. Each runs as its own
+  service, with a Telegram or webhook frontend routing tasks to them.
