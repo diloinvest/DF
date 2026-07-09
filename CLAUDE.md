@@ -15,6 +15,7 @@ Worker agents are defined in `.claude/agents/` and invoked with the Agent tool:
 | `editor` | Reviews and improves writing in the user's voice, catches their tics | any draft, post, or document that will be read by others |
 | `coach` | Accountability and reflection — weekly reviews, blockers, growth tracking | check-ins, retrospectives, "why am I stuck" conversations |
 | `researcher` | Research analyst — source-grounded, skeptical, synthesizing | deep dives, claim verification, competitor scans, anything needing cited sources |
+| `operator` | Admin — calendar, inbox triage, daily prep; reactive, not strategic | scheduling, email, morning prep, end-of-day wrap, quick admin tasks |
 
 ## Operating rules
 
