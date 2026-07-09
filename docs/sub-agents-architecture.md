@@ -151,3 +151,22 @@ In the middle-tier setup (this repo), the same agent and skills are invoked
 automatically: the orchestrator in the root CLAUDE.md routes decision-shaped
 tasks to the `strategist` worker, and the skills trigger on their own when
 you describe a decision or an imminent commitment.
+
+## Putting It All Together: The Full Stack
+
+Every layer composes. A single morning flow, end to end:
+
+1. **I send a voice memo** *(voice input)*
+2. **Whisper transcribes it and dispatches to the right agent**
+   *(sub-agents — this guide)*
+3. **The agent runs Claude Code on my machine, with my preferences loaded
+   from memory** *(Claude Code + memory/CLAUDE.md)*
+4. **It triggers the meeting-prep skill** *(skills)*
+5. **It writes the output to an artifact I built, which saves it
+   permanently for later review** *(artifacts + persistent storage)*
+6. **The result lands on my phone before I sit down for coffee.**
+
+The point of the stack: no single layer is impressive alone. Memory makes
+the agent sound like you, skills make it repeatable, tools let it touch the
+world, sub-agents keep each role on-target — and composed, they turn a
+30-second voice memo into finished work.
