@@ -152,6 +152,24 @@ automatically: the orchestrator in the root CLAUDE.md routes decision-shaped
 tasks to the `strategist` worker, and the skills trigger on their own when
 you describe a decision or an imminent commitment.
 
+## The Dispatch Formula
+
+Prompts to an agent team follow one shape:
+
+> **[Action verb] + [specific input] + [specific output] + [constraint]**
+
+Example:
+
+> "Look at my calendar tomorrow morning. For each meeting before noon, run
+> my meeting-prep skill on it. Put the briefs in a doc on my desktop called
+> Tomorrow Briefs."
+
+Every part earns its place: the action verb picks the agent, the specific
+input scopes the work, the specific output makes done checkable, and the
+constraint stops the agent from inventing its own definition of finished.
+Vague prompts get generalist output — the exact drift this architecture
+exists to eliminate.
+
 ## Putting It All Together: The Full Stack
 
 Every layer composes. A single morning flow, end to end:
