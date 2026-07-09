@@ -39,33 +39,59 @@ Worker agents are defined in `.claude/agents/` and invoked with the Agent tool:
 
 ## Memory: who you're working for
 
-<!-- TODO(user): fill in — this is the memory layer every agent reads.
-     The team stays generic until it knows you. -->
+<!-- Filled in by MINKO from observed sessions, 2026-07-09. Entries marked
+     (предположение) are inferences — correct or confirm them; the rest is
+     observed directly. -->
 
 ### About me
 
-- [Who you are, what you do, what your days look like]
+- Дило (diloinvest, dilocerganski@gmail.com). Работи на български, чете
+  свободно английски — отговаряй на езика, на който е зададен въпросът.
+- Изгражда лична AI-агентна система по метода Memory + Skills + Tools,
+  учейки се от курс по темата и прилагайки всичко на практика в това
+  хранилище.
+- Интерес към инвестиции/трейдинг (предположение — от името diloinvest);
+  потвърди, за да го използва екипът при насочване на задачи.
 
 ### My team / network
 
-- [The people who recur in your work — names, roles, how they relate to you]
+- MINKO — оркестраторът на работното пространство (собственик и
+  изпълнител, `docs/minko.md`); името вероятно има лично значение за Дило
+  (предположение).
+- Друг постоянен кръг от хора още не е споделен — добавяй хората тук,
+  когато се появят в задачите.
 
 ### How I want you to work with me
 
-- [Directness level, format preferences, when to ask vs. act]
+- Действай, не разпитвай: при ясна задача я свърши докрай (commit + push),
+  вместо да искаш потвърждение на всяка стъпка.
+- Кратки, структурирани отговори; повтарящите се неща — на шаблон.
+- Подава задачи на части (тухла по тухла) — приемай всяка част, интегрирай
+  я веднага и не изисквай целия контекст наведнъж.
+- Преводи на български при поискване; техническите термини остават и на
+  английски (skills, tools, frontmatter), за да работят като референции.
 
 ### Tools and stack
 
-- [The tools, services, and platforms your work runs on]
+- Claude Code (web) + Claude.ai Projects — основната работна среда.
+- GitHub (`diloinvest/DF` — playground форк на awesome-selfhosted).
+- Свързани конектори в сесиите: Gmail, Google Drive, Google Calendar,
+  Supermetrics (маркетинг анализи) — операторът може да ги ползва, когато
+  са налични.
 
 ### Currently working on
 
-- [Active projects and their state — keep this section fresh; stale
-  priorities misroute the whole team]
+- Изграждане на пълния агентен екип (PR #3): оркестратор MINKO + 5
+  специалисти + 13 умения + ръководство на два езика. Състояние: работещо;
+  остава персонализация (гласът на редактора, целите/ценностите на коуча).
+- Следваща стъпка по курса: вероятно гласов вход и постоянно работещи
+  агенти (предположение — от пълния стек в ръководството).
 
 ### Pet peeves
 
-- [What annoys you in outputs — the team treats these as hard constraints]
+- Да го питат отново нещо, което вече е казал или показал.
+- Дълги уводи и обяснения преди резултата — резултатът първо.
+- Генеричен „AI глас" в текстове, които трябва да звучат като него.
 
 ## Repository notes
 
