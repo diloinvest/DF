@@ -26,6 +26,7 @@
   - [Generative Artificial Intelligence (GenAI)](#generative-artificial-intelligence-genai)
   - [Knowledge Management Tools](#knowledge-management-tools)
   - [Maps and Global Positioning System (GPS)](#maps-and-global-positioning-system-gps)
+  - [Media Streaming - Audio Streaming](#media-streaming---audio-streaming)
   - [Media Streaming - Video Streaming](#media-streaming---video-streaming)
   - [Miscellaneous](#miscellaneous)
   - [Money, Budgeting & Management](#money-budgeting--management)
@@ -127,7 +128,7 @@
 
 - [Cluster Control](https://severalnines.com/clustercontrol/) - Setup many databases in few clicks with monitoring, load balancing and more. `⊘ Proprietary` `deb/Ansible/Shell/Docker`
 - [Directus](https://directus.io/) - An Instant App & API for your SQL Database. Directus wraps your new or existing SQL database with a realtime GraphQL+REST API for developers, and an intuitive admin app for non-technical users. ([Source Code](https://github.com/directus/directus)) `BUSL-1.1` `Nodejs/Docker`
-- [MindsDB](https://mindsdb.com/) - AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using standard queries. ([Source Code](https://github.com/mindsdb/mindsdb)) `Elastic-2.0` `Docker/Python`
+- [MindsDB](https://mindsdb.com/) - AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using standard queries. ([Source Code](https://github.com/mindsdb/minds)) `Elastic-2.0` `Docker/Python`
 - [NocoDB](https://www.nocodb.com/) - No-code platform that turns any database into a smart spreadsheet (alternative to Airtable and Smartsheet). ([Source Code](https://github.com/nocodb/nocodb)) `SUL-1.0` `Nodejs/Docker`
 
 
@@ -168,7 +169,6 @@
 **[`^        back to top        ^`](##awesome-selfhosted---non-free-software)**
 
 - [Cubiks-2048](https://github.com/Kshitij-Banerjee/Cubiks-2048) - Clone of 2048 game in 3D. ([Demo](https://kshitij-banerjee.github.io/Cubiks-2048/)) `CC-BY-NC-4.0` `Javascript`
-- [untrusted](https://github.com/AlexNisnevich/untrusted) - Unique puzzle game designed for geeks and developers, where you solve the puzzles in the game by reading and writing Javascript. ([Demo](http://alexnisnevich.github.io/untrusted/)) `CC-BY-NC-SA-3.0` `Nodejs`
 
 
 ### Games - Administrative Utilities & Control Panels
@@ -199,6 +199,13 @@
 - [MapTiler Server](https://www.maptiler.com/server/) - Host OpenStreetMap vector tiles, satellite imagery, own geodata and data from PostGIS database. `⊘ Proprietary` `Unknown`
 
 
+### Media Streaming - Audio Streaming
+
+**[`^        back to top        ^`](##awesome-selfhosted---non-free-software)**
+
+- [Väinö](https://supponexus.com/products/vaino) - High-fidelity music server for Raspberry Pi with iOS and Android companion apps. `⊘ Proprietary` `Python`
+
+
 ### Media Streaming - Video Streaming
 
 **[`^        back to top        ^`](##awesome-selfhosted---non-free-software)**
@@ -223,6 +230,7 @@
 **[`^        back to top        ^`](##awesome-selfhosted---non-free-software)**
 
 - [Akaunting](https://akaunting.com/) - Accounting software designed for small businesses and freelancers. ([Source Code](https://github.com/akaunting/akaunting)) `BUSL-1.1` `PHP`
+- [Assets](https://github.com/venil7/assets) `⚠` - Personal net worth and investment tracker. `⊘ Proprietary` `Docker`
 - [Invoice Ninja](https://www.invoiceninja.org/) - Powerful tool to invoice clients online. ([Demo](https://app.invoiceninja.com/invoices/create), [Source Code](https://github.com/invoiceninja/invoiceninja)) `Elastic-2.0` `PHP/Docker/K8S`
 - [Pancake](https://www.pancakeapp.com/) - Online invoicing, project management, time tracking and proposal software. `⊘ Proprietary` `PHP`
 
@@ -262,7 +270,6 @@
 **[`^        back to top        ^`](##awesome-selfhosted---non-free-software)**
 
 - [Axigen](https://www.axigen.com/mail-server/free/) - Turnkey messaging solution for small & micro businesses, integration projects or test environments. `⊘ Proprietary` `Unknown`
-- [Cloud Seeder](https://ipv6.rs/cloudseeder/) - One-click server appliance deployment and maintenance suite for Windows, MacOS and Linux. ([Source Code](https://github.com/ipv6rslimited/cloudseeder)) `⊘ Proprietary` `Go`
 - [Cloudron](https://www.cloudron.io/) - Open-core software allowing you to effortlessly self-host web apps on your server. ([Demo](https://my.demo.cloudron.io/), [Source Code](https://git.cloudron.io/groups/cloudron)) `⊘ Proprietary` `Nodejs/Docker`
 - [Cosmos](https://cosmos-cloud.io/) - Run server applications securely and with built-in privacy features. It acts as a secure gateway to your application, as well as a server manager. ([Source Code](https://github.com/azukaar/cosmos-Server)) `Apache-2.0/Commons-Clause` `Docker/Go`
 - [Easypanel](https://easypanel.io) - Modern server control panel powered by Docker. `⊘ Proprietary` `Docker`
@@ -333,6 +340,7 @@
 
 - [Bugsink](https://www.bugsink.com/) - Real-time error tracking for your applications with all the details in one place. Easy setup with clear instructions included. ([Source Code](https://github.com/bugsink/bugsink/)) `⊘ Proprietary` `Python/Docker`
 - [Deskpro](https://www.deskpro.com/) - On-Premise help desk software that includes email, chat, voice & help centre publishing. Full visible source code and API. `⊘ Proprietary` `Unknown`
+- [EKSO](https://ekso.app) - Help desk ticketing and project/issue tracker. `⊘ Proprietary` `Docker`
 - [Erxes](https://erxes.io/install/) - Marketing, sales, and customer service platform designed to help businesses attract more engaged customers. ([Source Code](https://github.com/erxes/erxes)) `AGPL-3.0/Commons-Clause` `Docker/Nodejs`
 - [Full Help](https://www.fullhelp.com/en/) - Simple, easy to use help desk & knowledge base software. Custom branding, custom themes, restful API, communication channels, multi-company support, multi-language support, and much more! At least 1 new release per month. `⊘ Proprietary` `PHP`
 - [JIRA](https://www.atlassian.com/software/jira) - Professional and extensible issue tracker. `⊘ Proprietary` `Java`
