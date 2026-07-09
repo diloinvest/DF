@@ -1,5 +1,7 @@
 # Sub-Agents: Run a Team of Specialized Claudes
 
+*Български превод: [sub-agents-architecture.bg.md](sub-agents-architecture.bg.md)*
+
 ## The Anatomy of an Agent
 
 An agent is not complicated. It is three things stacked together:
