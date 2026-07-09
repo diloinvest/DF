@@ -188,3 +188,40 @@ The point of the stack: no single layer is impressive alone. Memory makes
 the agent sound like you, skills make it repeatable, tools let it touch the
 world, sub-agents keep each role on-target — and composed, they turn a
 30-second voice memo into finished work.
+
+## Appendix: Request Templates
+
+Fill these in and hand them to any agent. The blanks are the spec — an
+unfilled bracket means an invented behavior.
+
+### Skill request
+
+```text
+Build me a skill called "[name]".
+Trigger: [phrases that activate it]
+Behavior: [step-by-step instructions]
+Output: [exact format spec]
+Constraints: [length, tone, what to avoid]
+```
+
+### Artifact request
+
+```text
+Build me an artifact called "[name]".
+WHAT IT DOES: [input → action → output]
+BEHAVIOR: [API call spec]
+PERSISTENT STORAGE: [storage key + Vault tab]
+SYSTEM PROMPT: [voice + constraints]
+STYLE: [light/dark, layout, animation]
+```
+
+### Personal memory (CLAUDE.md sections)
+
+```text
+About me
+My team / network
+How I want you to work with me
+Tools and stack
+Currently working on
+Pet peeves
+```
