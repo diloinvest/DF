@@ -129,3 +129,25 @@ a laptop with energy saver disabled.
   folders. Spawn sub-agents from a master orchestrator session.
 - **Advanced:** always-on agents on a Mac Mini or VPS. Each runs as its own
   service, with a Telegram or webhook frontend routing tasks to them.
+
+## Worked Example: Invoking the Strategist
+
+This repository contains a complete Strategist agent
+(`.claude/agents/strategist.md`) and its two skills
+(`.claude/skills/decision-stress-test/`, `.claude/skills/pre-mortem/`).
+To run it as an easiest-tier setup:
+
+1. Create a dedicated Project on Claude.ai called **"Strategist"**.
+2. Paste the agent's CLAUDE.md content as the Project's custom instructions.
+3. Add the two skills as project files.
+4. Whenever you're weighing something — *before* you commit to it — open the
+   project and dump the decision in.
+
+The two skills split the timeline: `decision-stress-test` runs while you're
+still weighing (assumptions, steelman, regret analysis); `pre-mortem` runs
+once you've committed (failure modes, leading indicators, check-in dates).
+
+In the middle-tier setup (this repo), the same agent and skills are invoked
+automatically: the orchestrator in the root CLAUDE.md routes decision-shaped
+tasks to the `strategist` worker, and the skills trigger on their own when
+you describe a decision or an imminent commitment.
