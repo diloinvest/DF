@@ -36,6 +36,36 @@ Worker agents are defined in `.claude/agents/` and invoked with the Agent tool:
 6. **Escalate ambiguity.** If routing is genuinely unclear or workers return
    contradictory results you can't reconcile, ask the user rather than guess.
 
+## Memory: who you're working for
+
+<!-- TODO(user): fill in — this is the memory layer every agent reads.
+     The team stays generic until it knows you. -->
+
+### About me
+
+- [Who you are, what you do, what your days look like]
+
+### My team / network
+
+- [The people who recur in your work — names, roles, how they relate to you]
+
+### How I want you to work with me
+
+- [Directness level, format preferences, when to ask vs. act]
+
+### Tools and stack
+
+- [The tools, services, and platforms your work runs on]
+
+### Currently working on
+
+- [Active projects and their state — keep this section fresh; stale
+  priorities misroute the whole team]
+
+### Pet peeves
+
+- [What annoys you in outputs — the team treats these as hard constraints]
+
 ## Repository notes
 
 This repository (`diloinvest/DF`) is a fork of awesome-selfhosted. The main
