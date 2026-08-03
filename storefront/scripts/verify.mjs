@@ -162,6 +162,58 @@ async function main() {
   check("cart persists across navigation", (await page.locator("aside").count()) > 0);
   await page.screenshot({ path: join(OUT, "cart-filled-desktop.png"), fullPage: true });
 
+  console.log("\nPagination");
+  await page.goto(`${BASE}/collections/all`, { waitUntil: "networkidle" });
+  const pagination = page.getByRole("navigation", { name: "Pagination" });
+  check("pagination renders", await pagination.isVisible());
+
+  const firstPageTitle = await page.locator("article h3").first().innerText();
+  await pagination.getByRole("link", { name: "Page 2" }).click();
+  await page.waitForURL("**/collections/all?page=2");
+  const secondPageTitle = await page.locator("article h3").first().innerText();
+  check("page 2 shows different products", firstPageTitle !== secondPageTitle);
+  check(
+    "page 2 marks itself current",
+    (await pagination
+      .getByRole("link", { name: "Page 2" })
+      .getAttribute("aria-current")) === "page",
+  );
+
+  await page.goto(`${BASE}/collections/all?page=999`, {
+    waitUntil: "networkidle",
+  });
+  check(
+    "out-of-range page clamps instead of rendering empty",
+    (await page.locator("article").count()) > 0,
+  );
+
+  console.log("\nNewsletter");
+  await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
+  const emailField = page.locator("#newsletter-email");
+  await emailField.fill("not-an-email");
+  await page.getByRole("button", { name: "Subscribe" }).click();
+  await page.waitForTimeout(600);
+  const invalidNotice = await page
+    .locator("section")
+    .filter({ has: emailField })
+    .getByRole("status")
+    .innerText();
+  check("invalid email is rejected", invalidNotice.length > 0, invalidNotice);
+
+  await emailField.fill("dilo@example.com");
+  await page.getByRole("button", { name: "Subscribe" }).click();
+  await page.waitForTimeout(800);
+  const validNotice = await page
+    .locator("section")
+    .filter({ has: emailField })
+    .getByRole("status")
+    .innerText();
+  check(
+    "valid email is accepted",
+    validNotice.includes("on the list"),
+    validNotice,
+  );
+
   await context.close();
   await browser.close();
 

@@ -2,24 +2,36 @@
 
 import { useState } from "react";
 
+import { subscribe } from "@/app/actions/newsletter";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { newsletter } from "@/content/site";
 
-type Status = "idle" | "success" | "error";
+type Status = "idle" | "pending" | "success" | "error";
 
 export function Newsletter() {
   const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState<string>("");
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const email = new FormData(event.currentTarget).get("email");
-    const valid =
-      typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    const form = event.currentTarget;
+    const email = new FormData(form).get("email");
 
-    // Валидацията е реална; изпращането не е — закачи го за твоя ESP тук.
-    setStatus(valid ? "success" : "error");
-    if (valid) event.currentTarget.reset();
+    if (typeof email !== "string") return;
+
+    setStatus("pending");
+    const result = await subscribe(email);
+
+    if (result.ok) {
+      setStatus("success");
+      setMessage(newsletter.successMessage);
+      form.reset();
+      return;
+    }
+
+    setStatus("error");
+    setMessage(result.message);
   }
 
   return (
@@ -48,7 +60,9 @@ export function Newsletter() {
               aria-invalid={status === "error"}
               className="h-11 flex-1 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-bg)] px-4 text-base outline-hidden placeholder:text-[var(--color-text-muted)]"
             />
-            <Button type="submit">{newsletter.buttonLabel}</Button>
+            <Button type="submit" disabled={status === "pending"}>
+              {status === "pending" ? "…" : newsletter.buttonLabel}
+            </Button>
           </form>
 
           <p
@@ -56,8 +70,7 @@ export function Newsletter() {
             aria-live="polite"
             className="mt-3 min-h-5 text-sm text-[var(--color-text-muted)]"
           >
-            {status === "success" ? newsletter.successMessage : null}
-            {status === "error" ? newsletter.errorMessage : null}
+            {status === "success" || status === "error" ? message : null}
           </p>
 
           <p className="mt-1 text-xs text-[var(--color-text-muted)]">

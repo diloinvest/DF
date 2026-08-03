@@ -47,23 +47,12 @@ Develop apps → Create an app → Storefront API → Install. Нужни scope-
 CSS custom properties, копито е в `site.ts`. Това е разликата спрямо
 Shopify темата — сменяш палитрата на едно място и целият магазин я поема.
 
-### Истинският серифен шрифт
+### Шрифтове
 
-`--font-heading` сочи към системен fallback, защото build средата няма
-достъп до Google Fonts. За да сложиш Playfair Display (или каквото ползва
-оригиналът):
-
-```bash
-npm install @fontsource/playfair-display
-```
-
-```ts
-// src/app/layout.tsx
-import "@fontsource/playfair-display/700.css";
-```
-
-Стойността в `globals.css` вече го чака първи в стека — не се пипа нищо
-друго.
+Playfair Display е самостоятелно хостван през `@fontsource` — няма заявка
+към Google Fonts нито на build, нито при зареждане. Кирилицата е включена.
+Смяна на шрифт: инсталираш друг `@fontsource` пакет, сменяш двата import-а
+в `src/app/layout.tsx` и стойността на `--font-heading`.
 
 ### Добавяне на нова секция на началната страница
 
@@ -110,10 +99,21 @@ npm run build        # production build
 npm run start        # production сървър
 npm run typecheck    # tsc --noEmit
 npm run lint         # eslint
+npm test             # vitest, 41 unit теста
+npm run test:watch   # vitest в watch режим
 npm run images       # регенерира демо SVG изображенията
 ```
 
 ## Проверка
+
+Два слоя. Unit тестовете покриват логиката (сортиране, търсене, колекции,
+цени, количка):
+
+```bash
+npm test
+```
+
+End-to-end проверката кара реален браузър през магазина:
 
 ```bash
 npm run build
@@ -121,10 +121,15 @@ npm run start -- --port 3100
 node scripts/verify.mjs
 ```
 
-Минава през пътя начало → колекция → продукт → избор на вариант →
-add to cart → количка → checkout, проверява за хоризонтален скрол и
-конзолни грешки, и снима всяка страница на 375px и 1440px в
-`verification/`.
+Минава пътя начало → колекция → продукт → избор на вариант → add to cart →
+количка → checkout, проверява пагинацията (включително страница извън
+диапазона), формата за бюлетин с валиден и невалиден имейл, липсата на
+хоризонтален скрол и на конзолни грешки, и снима всяка страница на 375px и
+1440px в `verification/`.
+
+CI (`.github/workflows/storefront.yml`) пуска lint, typecheck, тестовете и
+build при всеки push, плюс проверка че генерираните изображения не са се
+разминали с каталога.
 
 ## Deploy на Vercel
 

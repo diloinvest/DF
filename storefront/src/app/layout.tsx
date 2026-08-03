@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 
+// Серифът за заглавията, самостоятелно хостван — без заявка към Google Fonts
+// на build или на зареждане. Кирилицата е включена нарочно.
+import "@fontsource/playfair-display/700.css";
+import "@fontsource/playfair-display/cyrillic-700.css";
+
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { Footer } from "@/components/layout/Footer";

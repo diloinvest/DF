@@ -1,0 +1,49 @@
+name: storefront
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "storefront/**"
+      - ".github/workflows/storefront.yml"
+  pull_request:
+    paths:
+      - "storefront/**"
+      - ".github/workflows/storefront.yml"
+
+defaults:
+  run:
+    working-directory: storefront
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: storefront/package-lock.json
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      # Изображенията са генерирани — ако скриптът и комитнатите файлове се
+      # разминат, някой е редактирал каталога без да ги презапише.
+      - name: Placeholder images are up to date
+        run: |
+          npm run images
+          git diff --exit-code -- public/images

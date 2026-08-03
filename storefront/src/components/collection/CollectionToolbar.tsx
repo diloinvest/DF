@@ -25,6 +25,9 @@ export function CollectionToolbar({
       const params = new URLSearchParams(searchParams.toString());
       if (value) params.set(key, value);
       else params.delete(key);
+      // Нов филтър или подредба → обратно на първата страница, иначе
+      // потребителят каца на празна страница 4 от новия, по-къс резултат.
+      params.delete("page");
       const query = params.toString();
       router.push(query ? `${pathname}?${query}` : pathname, { scroll: false });
     },
