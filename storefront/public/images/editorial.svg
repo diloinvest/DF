@@ -1,9 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1050" width="1400" height="1050" role="img" aria-label="Workbench with tools">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1050" width="1400" height="1050" role="img" aria-label="Watchmaker&apos;s bench with a movement holder">
   <rect width="1400" height="1050" fill="#ecece8" />
-  <rect x="1147" y="637" width="201" height="361" rx="999" fill="#e5e0d8" />
-  <rect x="400" y="539" width="292" height="456" rx="999" fill="#dfe1de" />
-  <rect x="852" y="485" width="386" height="502" rx="999" fill="#e8e4dc" />
-  <rect x="338" y="610" width="178" height="350" rx="999" fill="#dcd9d0" />
-  <rect x="408" y="753" width="259" height="231" rx="999" fill="#e5e0d8" />
-  <rect x="0" y="960" width="1400" height="90" fill="#d9d9d4" opacity="0.55" />
+  <rect x="221" y="756" width="269" height="126" rx="999" fill="#e5e0d8" />
+  <rect x="782" y="582" width="300" height="324" rx="10" fill="#d6d8d3" />
+  <rect x="184" y="754" width="200" height="123" rx="10" fill="#dfe1de" />
+  <rect x="964" y="794" width="292" height="127" rx="10" fill="#d6d8d3" />
+  <rect x="124" y="616" width="115" height="254" rx="999" fill="#dcd9d0" />
+  <rect x="1043" y="625" width="97" height="252" rx="10" fill="#d6d8d3" />
+  <circle cx="868" cy="546" r="170" fill="#a8adb4" />
+  <circle cx="868" cy="546" r="150" fill="#d8dade" />
+  <circle cx="868" cy="546" r="128" fill="#1c1c1e" />
+  <circle cx="868" cy="546" r="18" fill="#d8dade" />
+  <rect x="0" y="930" width="1400" height="120" fill="#d9d9d4" opacity="0.6" />
 </svg>

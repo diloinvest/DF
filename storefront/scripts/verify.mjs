@@ -22,8 +22,8 @@ const VIEWPORTS = [
 const PAGES = [
   { name: "home", path: "/" },
   { name: "collection", path: "/collections/all" },
-  { name: "product", path: "/products/hallow-stoneware-mug" },
-  { name: "search", path: "/search?q=linen" },
+  { name: "product", path: "/products/meridian-open-heart-automatic" },
+  { name: "search", path: "/search?q=diver" },
   { name: "cart-empty", path: "/cart" },
   { name: "page-about", path: "/pages/about" },
   { name: "not-found", path: "/no-such-page" },
@@ -115,11 +115,15 @@ async function main() {
   });
 
   await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
-  check("home loads", await page.locator("h1").first().isVisible());
+  check("home has exactly one h1", (await page.locator("h1").count()) === 1);
+  check(
+    "home renders the featured section",
+    await page.getByRole("heading", { level: 2 }).first().isVisible(),
+  );
 
-  await page.getByRole("link", { name: "Shop the collection" }).click();
+  await page.getByRole("navigation", { name: "Main" }).getByText("Catalog").click();
   await page.waitForURL("**/collections/all");
-  check("hero CTA → collection", page.url().includes("/collections/all"));
+  check("nav → collection", page.url().includes("/collections/all"));
 
   await page.locator("article a").first().click();
   await page.waitForURL("**/products/**");

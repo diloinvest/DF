@@ -90,279 +90,298 @@ function buildProduct(seed: ProductSeed, index: number): Product {
 
 const seeds: ProductSeed[] = [
   {
-    handle: "hallow-stoneware-mug",
-    title: "Hallow Stoneware Mug",
+    handle: "meridian-open-heart-automatic",
+    title: "Meridian Open Heart Automatic",
     vendor: "Cartely",
-    productType: "Drinkware",
-    tags: ["ceramic", "kitchen", "best-seller"],
+    productType: "Automatic",
+    tags: ["automatic", "dress", "best-seller", "new"],
     description:
-      "A 340ml stoneware mug with an unglazed foot and a handle sized for a whole hand, not two fingers. Fired twice at 1240°C, so the body stays non-porous even after the glaze wears.",
+      "A 40mm rose gold-plated case with a cut-away dial showing the balance wheel at six o'clock. Sunray blue dial, applied indices, and a domed sapphire crystal that keeps the reflections honest.",
     details: [
-      "340ml / 11.5oz capacity",
-      "Dishwasher and microwave safe",
-      "Unglazed foot ring, matte exterior",
-      "Thrown in Stoke-on-Trent, UK",
+      "Movement: Seagull ST2130 automatic, 41h reserve",
+      "Case 40mm, lug-to-lug 47mm, thickness 12.1mm",
+      "Sapphire crystal, exhibition caseback",
+      "20mm lug width, quick-release leather strap",
+      "5 ATM water resistance",
     ],
     images: 3,
-    optionNames: ["Color"],
+    optionNames: ["Strap"],
     variants: [
-      { options: { Color: "Chalk" }, price: 28 },
-      { options: { Color: "Clay" }, price: 28 },
-      { options: { Color: "Moss" }, price: 28, available: false },
+      { options: { Strap: "Black leather" }, price: 389 },
+      { options: { Strap: "Brown leather" }, price: 389 },
+      { options: { Strap: "Steel bracelet" }, price: 429, available: false },
     ],
     featured: true,
-    createdAt: "2026-07-02",
+    createdAt: "2026-07-24",
   },
   {
-    handle: "field-linen-throw",
-    title: "Field Linen Throw",
+    handle: "atlas-diver-300",
+    title: "Atlas Diver 300",
     vendor: "Cartely",
-    productType: "Textiles",
-    tags: ["linen", "home", "best-seller"],
+    productType: "Diver",
+    tags: ["diver", "steel", "best-seller", "new"],
     description:
-      "Stonewashed European flax, 140 × 200cm, with a hand-knotted fringe. Heavy enough to stay put on a sofa arm and it softens noticeably over the first ten washes.",
+      "A 300m diver with a 120-click unidirectional bezel and a ceramic insert that will not fade the way aluminium does. Lume is BGW9 on the dial and the pip.",
     details: [
-      "100% European flax linen, 260gsm",
-      "140 × 200cm",
-      "Machine wash cold, line dry",
-      "Woven in Lithuania",
+      "Movement: NH35A automatic, hacking and hand-winding",
+      "Case 41mm, lug-to-lug 47.5mm, thickness 13mm",
+      "Ceramic bezel insert, 120-click unidirectional",
+      "300m water resistance, screw-down crown",
+      "Super-LumiNova BGW9",
     ],
     images: 3,
-    optionNames: ["Color"],
+    optionNames: ["Dial"],
     variants: [
-      { options: { Color: "Oat" }, price: 145, compareAt: 180 },
-      { options: { Color: "Slate" }, price: 145, compareAt: 180 },
+      { options: { Dial: "Forest green" }, price: 445 },
+      { options: { Dial: "Midnight blue" }, price: 445 },
+      { options: { Dial: "Black" }, price: 445 },
     ],
     featured: true,
-    createdAt: "2026-07-11",
+    createdAt: "2026-07-29",
   },
   {
-    handle: "arc-desk-lamp",
-    title: "Arc Desk Lamp",
+    handle: "rally-chronograph",
+    title: "Rally Chronograph",
     vendor: "Cartely",
-    productType: "Lighting",
-    tags: ["desk", "lighting", "new"],
+    productType: "Chronograph",
+    tags: ["chronograph", "steel", "new"],
     description:
-      "A counterweighted task lamp in powder-coated steel. The arm holds position without a spring, so there is nothing inside to lose tension in five years.",
+      "A three-register mecaquartz chronograph. The pushers snap the way a mechanical does, and the reset is instant, because the chronograph module is mechanical even though the timekeeping is not.",
     details: [
-      "Powder-coated steel, cast iron base",
-      "E27 fitting, bulb not included",
-      "Reach 62cm, height 48cm",
-      "Replaceable cord and switch",
+      "Movement: Seiko VK64 mecaquartz",
+      "Case 39mm, lug-to-lug 46mm, thickness 11.8mm",
+      "Tachymeter bezel, box-domed sapphire",
+      "20mm lug width, drilled lugs",
+      "10 ATM water resistance",
     ],
     images: 3,
-    optionNames: ["Color"],
+    optionNames: ["Dial", "Strap"],
     variants: [
-      { options: { Color: "Black" }, price: 210 },
-      { options: { Color: "Sand" }, price: 210 },
+      { options: { Dial: "Panda", Strap: "Rally leather" }, price: 329 },
+      { options: { Dial: "Panda", Strap: "Steel bracelet" }, price: 359 },
+      { options: { Dial: "Reverse panda", Strap: "Rally leather" }, price: 329 },
+      {
+        options: { Dial: "Reverse panda", Strap: "Steel bracelet" },
+        price: 359,
+      },
     ],
     featured: true,
-    createdAt: "2026-07-20",
+    createdAt: "2026-07-30",
   },
   {
-    handle: "kerf-oak-tray",
-    title: "Kerf Oak Tray",
+    handle: "shard-angular-quartz",
+    title: "Shard Angular Quartz",
     vendor: "Cartely",
-    productType: "Kitchen",
-    tags: ["wood", "kitchen", "new"],
+    productType: "Quartz",
+    tags: ["quartz", "sport", "new"],
     description:
-      "Solid white oak, cut from a single board so the grain runs unbroken across the base. Finished with hardwax oil you can top up yourself instead of sending it away.",
+      "An asymmetric case in blackened steel with a skeleton dial. Loud on purpose, and light enough at 78 grams that you forget it is on.",
     details: [
-      "Solid white oak, hardwax oil finish",
-      "38 × 24 × 3cm",
-      "Hand wash only",
-      "Made in Denmark",
-    ],
-    images: 2,
-    optionNames: ["Size"],
-    variants: [
-      { options: { Size: "Small" }, price: 68 },
-      { options: { Size: "Large" }, price: 92 },
-    ],
-    createdAt: "2026-07-18",
-  },
-  {
-    handle: "plane-notebook",
-    title: "Plane Notebook",
-    vendor: "Cartely",
-    productType: "Desk",
-    tags: ["paper", "desk", "new"],
-    description:
-      "A 192-page notebook that opens flat because it is section-sewn, not glued. 100gsm uncoated stock that takes fountain ink without ghosting.",
-    details: [
-      "192 pages, 100gsm uncoated",
-      "A5, section-sewn binding",
-      "Ruled or dot grid",
-      "Printed in Italy",
-    ],
-    images: 2,
-    optionNames: ["Ruling", "Color"],
-    variants: [
-      { options: { Ruling: "Ruled", Color: "Ink" }, price: 24 },
-      { options: { Ruling: "Ruled", Color: "Bone" }, price: 24 },
-      { options: { Ruling: "Dot grid", Color: "Ink" }, price: 24 },
-      { options: { Ruling: "Dot grid", Color: "Bone" }, price: 24, available: false },
-    ],
-    createdAt: "2026-07-25",
-  },
-  {
-    handle: "column-vase",
-    title: "Column Vase",
-    vendor: "Cartely",
-    productType: "Ceramics",
-    tags: ["ceramic", "home"],
-    description:
-      "A straight-sided vase with a narrow neck that holds a loose stem upright instead of letting it slump against the rim.",
-    details: [
-      "Glazed stoneware",
-      "H 26cm, Ø 9cm",
-      "Watertight, no liner needed",
-      "Each piece varies slightly",
-    ],
-    images: 2,
-    optionNames: ["Color"],
-    variants: [
-      { options: { Color: "Chalk" }, price: 54 },
-      { options: { Color: "Clay" }, price: 54 },
-    ],
-    createdAt: "2026-06-14",
-  },
-  {
-    handle: "twill-apron",
-    title: "Twill Apron",
-    vendor: "Cartely",
-    productType: "Kitchen",
-    tags: ["cotton", "kitchen", "best-seller"],
-    description:
-      "Heavy cotton twill with riveted stress points and a neck strap that adjusts from both sides, so it sits level whichever way you tie it.",
-    details: [
-      "340gsm cotton twill",
-      "Copper rivets, adjustable neck",
-      "Two front pockets, one pen slot",
-      "Machine wash warm",
-    ],
-    images: 2,
-    optionNames: ["Size", "Color"],
-    variants: [
-      { options: { Size: "One size", Color: "Indigo" }, price: 62 },
-      { options: { Size: "One size", Color: "Olive" }, price: 62 },
-      { options: { Size: "One size", Color: "Charcoal" }, price: 62 },
-    ],
-    createdAt: "2026-05-30",
-  },
-  {
-    handle: "brass-bottle-opener",
-    title: "Brass Bottle Opener",
-    vendor: "Cartely",
-    productType: "Kitchen",
-    tags: ["brass", "kitchen", "sale"],
-    description:
-      "Machined from a single billet of brass. Heavy in the hand, and it develops a patina that maps wherever you hold it.",
-    details: [
-      "Solid brass, 118g",
-      "11cm long",
-      "Unlacquered — will patina",
-      "Machined in Sheffield, UK",
+      "Movement: Miyota 2035 quartz",
+      "Case 44 × 38mm, thickness 12.4mm",
+      "Blackened stainless steel, PVD coated",
+      "24mm integrated silicone strap",
+      "5 ATM water resistance",
     ],
     images: 2,
     optionNames: ["Finish"],
     variants: [
-      { options: { Finish: "Raw brass" }, price: 26, compareAt: 38 },
-      { options: { Finish: "Brushed" }, price: 26, compareAt: 38 },
+      { options: { Finish: "Matte black" }, price: 149 },
+      { options: { Finish: "Gunmetal" }, price: 149 },
     ],
-    createdAt: "2026-04-08",
+    createdAt: "2026-07-26",
   },
   {
-    handle: "stack-storage-box",
-    title: "Stack Storage Box",
+    handle: "field-38-mechanical",
+    title: "Field 38 Mechanical",
     vendor: "Cartely",
-    productType: "Storage",
-    tags: ["desk", "storage"],
+    productType: "Field",
+    tags: ["mechanical", "field", "best-seller"],
     description:
-      "Recycled polypropylene boxes with a lid that locks flush when stacked, so a column of four does not slide apart when you pull the bottom one.",
+      "A hand-wound field watch with a matte dial and no date window. 38mm, so it sits flat under a cuff, and the lume is thick enough to read at four in the morning.",
     details: [
-      "80% recycled polypropylene",
-      "Three sizes, all stack together",
-      "Lid included",
-      "Made in the Netherlands",
+      "Movement: Seagull ST3600 hand-wound, 46h reserve",
+      "Case 38mm, lug-to-lug 45mm, thickness 10.2mm",
+      "Matte dial, no date",
+      "18mm lug width, canvas or leather",
+      "5 ATM water resistance",
     ],
     images: 2,
-    optionNames: ["Size", "Color"],
+    optionNames: ["Dial", "Strap"],
     variants: [
-      { options: { Size: "S", Color: "Bone" }, price: 22 },
-      { options: { Size: "M", Color: "Bone" }, price: 32 },
-      { options: { Size: "L", Color: "Bone" }, price: 44 },
-      { options: { Size: "S", Color: "Slate" }, price: 22 },
-      { options: { Size: "M", Color: "Slate" }, price: 32 },
-      { options: { Size: "L", Color: "Slate" }, price: 44 },
+      { options: { Dial: "Olive", Strap: "Canvas" }, price: 265 },
+      { options: { Dial: "Olive", Strap: "Leather" }, price: 275 },
+      { options: { Dial: "Black", Strap: "Canvas" }, price: 265 },
+      { options: { Dial: "Black", Strap: "Leather" }, price: 275 },
     ],
-    createdAt: "2026-06-02",
+    createdAt: "2026-06-18",
   },
   {
-    handle: "grid-wall-shelf",
-    title: "Grid Wall Shelf",
+    handle: "regent-dress-slim",
+    title: "Regent Dress Slim",
     vendor: "Cartely",
-    productType: "Furniture",
-    tags: ["steel", "home", "new"],
+    productType: "Dress",
+    tags: ["dress", "leather"],
     description:
-      "A powder-coated steel shelf that mounts on two points and carries 15kg. Ships flat with the fixings for masonry and plasterboard both in the box.",
+      "7.9mm thick, which is thin enough to disappear under a shirt cuff. Applied baton indices, a small seconds sub-dial, and nothing else on the dial.",
     details: [
-      "Powder-coated steel, 15kg load",
-      "60 × 18cm",
-      "Fixings for masonry and plasterboard",
-      "Flat-packed, two-bolt mount",
+      "Movement: Miyota 9015 automatic, 42h reserve",
+      "Case 39mm, lug-to-lug 46mm, thickness 7.9mm",
+      "Small seconds at six, no date",
+      "19mm lug width, alligator-grain leather",
+      "3 ATM water resistance",
     ],
     images: 2,
-    optionNames: ["Color"],
+    optionNames: ["Dial"],
     variants: [
-      { options: { Color: "Black" }, price: 118 },
-      { options: { Color: "Bone" }, price: 118 },
+      { options: { Dial: "Silver" }, price: 495 },
+      { options: { Dial: "Salmon" }, price: 525 },
+      { options: { Dial: "Black" }, price: 495 },
     ],
-    createdAt: "2026-07-28",
+    createdAt: "2026-06-05",
   },
   {
-    handle: "everyday-tumbler",
-    title: "Everyday Tumbler",
+    handle: "pilot-type-b",
+    title: "Pilot Type B",
     vendor: "Cartely",
-    productType: "Drinkware",
-    tags: ["glass", "kitchen", "best-seller"],
+    productType: "Pilot",
+    tags: ["pilot", "automatic", "new"],
     description:
-      "Pressed glass with a thick base that survives being set down hard. Sold in fours because one always goes missing.",
+      "A Type B flieger layout — minutes on the outer track, hours inset. 42mm and legible at a glance, which was the entire point of the original spec.",
     details: [
-      "Set of four, 280ml each",
-      "Pressed soda-lime glass",
-      "Dishwasher safe, stackable",
-      "Made in Portugal",
+      "Movement: NH38A automatic, exhibition caseback",
+      "Case 42mm, lug-to-lug 50mm, thickness 12.6mm",
+      "Type B flieger dial, oversized crown",
+      "22mm lug width, riveted leather",
+      "10 ATM water resistance",
     ],
     images: 2,
-    optionNames: ["Set"],
+    optionNames: ["Case"],
     variants: [
-      { options: { Set: "Set of 4" }, price: 42 },
-      { options: { Set: "Set of 8" }, price: 76 },
+      { options: { Case: "Brushed steel" }, price: 355 },
+      { options: { Case: "Sandblasted black" }, price: 375 },
     ],
-    createdAt: "2026-05-12",
+    createdAt: "2026-07-14",
   },
   {
-    handle: "carry-canvas-tote",
-    title: "Carry Canvas Tote",
+    handle: "harbor-gmt",
+    title: "Harbor GMT",
+    vendor: "Cartely",
+    productType: "GMT",
+    tags: ["gmt", "travel", "steel"],
+    description:
+      "A true GMT with an independently jumping hour hand, so you can change local time on landing without stopping the movement.",
+    details: [
+      "Movement: NH34A automatic true GMT",
+      "Case 40mm, lug-to-lug 47mm, thickness 12.9mm",
+      "24-hour bidirectional bezel, ceramic insert",
+      "20mm lug width, oyster-style bracelet",
+      "20 ATM water resistance",
+    ],
+    images: 2,
+    optionNames: ["Bezel"],
+    variants: [
+      { options: { Bezel: "Black / grey" }, price: 585 },
+      { options: { Bezel: "Blue / red" }, price: 585 },
+      { options: { Bezel: "Black / green" }, price: 585, available: false },
+    ],
+    createdAt: "2026-05-21",
+  },
+  {
+    handle: "cove-skin-diver",
+    title: "Cove Skin Diver",
+    vendor: "Cartely",
+    productType: "Diver",
+    tags: ["diver", "vintage", "sale"],
+    description:
+      "A 38mm skin diver in the 1960s proportions — thin bezel, domed acrylic, and a case that wears smaller than the spec sheet suggests.",
+    details: [
+      "Movement: Miyota 8215 automatic",
+      "Case 38mm, lug-to-lug 45mm, thickness 11.5mm",
+      "Domed hesalite crystal",
+      "20mm lug width, tropic rubber",
+      "20 ATM water resistance",
+    ],
+    images: 2,
+    optionNames: ["Dial"],
+    variants: [
+      { options: { Dial: "Gilt black" }, price: 289, compareAt: 359 },
+      { options: { Dial: "Cream" }, price: 289, compareAt: 359 },
+    ],
+    createdAt: "2026-04-16",
+  },
+  {
+    handle: "meridian-moonphase",
+    title: "Meridian Moonphase",
+    vendor: "Cartely",
+    productType: "Dress",
+    tags: ["dress", "complication"],
+    description:
+      "A moonphase at six with a hand-finished disc rather than a printed one. Accurate to a day every 122 years, which is longer than the warranty.",
+    details: [
+      "Movement: Seagull ST2504 automatic moonphase",
+      "Case 40mm, lug-to-lug 47mm, thickness 12.8mm",
+      "Guilloché dial, applied Roman indices",
+      "20mm lug width, calf leather",
+      "3 ATM water resistance",
+    ],
+    images: 2,
+    optionNames: ["Dial"],
+    variants: [
+      { options: { Dial: "Ivory" }, price: 645 },
+      { options: { Dial: "Navy" }, price: 645 },
+    ],
+    createdAt: "2026-05-08",
+  },
+  {
+    handle: "linen-two-piece-strap",
+    title: "Linen Two-Piece Strap",
+    vendor: "Cartely",
+    productType: "Straps",
+    tags: ["strap", "accessories", "sale"],
+    description:
+      "Woven linen over a leather backing, with quick-release spring bars so you can change it without a tool and without scratching the lugs.",
+    details: [
+      "Woven linen, vegetable-tanned leather backing",
+      "Quick-release spring bars fitted",
+      "18, 20 or 22mm",
+      "Brushed steel buckle",
+      "115/75mm strap lengths",
+    ],
+    images: 2,
+    optionNames: ["Width", "Color"],
+    variants: [
+      { options: { Width: "18mm", Color: "Sand" }, price: 42, compareAt: 58 },
+      { options: { Width: "20mm", Color: "Sand" }, price: 42, compareAt: 58 },
+      { options: { Width: "22mm", Color: "Sand" }, price: 42, compareAt: 58 },
+      { options: { Width: "18mm", Color: "Charcoal" }, price: 42, compareAt: 58 },
+      { options: { Width: "20mm", Color: "Charcoal" }, price: 42, compareAt: 58 },
+      { options: { Width: "22mm", Color: "Charcoal" }, price: 42, compareAt: 58 },
+    ],
+    createdAt: "2026-04-02",
+  },
+  {
+    handle: "travel-watch-roll",
+    title: "Travel Watch Roll",
     vendor: "Cartely",
     productType: "Accessories",
-    tags: ["cotton", "accessories", "sale"],
+    tags: ["accessories", "leather"],
     description:
-      "18oz canvas with boxed corners and webbing straps that run the full depth of the bag rather than being stitched to the rim.",
+      "Holds three watches with padded dividers that actually separate them, so bracelets do not mark the case next to them in a bag.",
     details: [
-      "18oz cotton canvas",
-      "42 × 38 × 14cm, boxed base",
-      "Full-length webbing straps",
-      "Inner pocket with key clip",
+      "Full-grain leather, suede lining",
+      "Three padded slots with dividers",
+      "Fits up to 46mm cases on bracelets",
+      "Elastic closure, no zip to scratch",
+      "24 × 9cm rolled",
     ],
     images: 2,
     optionNames: ["Color"],
     variants: [
-      { options: { Color: "Natural" }, price: 38, compareAt: 52 },
-      { options: { Color: "Charcoal" }, price: 38, compareAt: 52 },
+      { options: { Color: "Tan" }, price: 89 },
+      { options: { Color: "Black" }, price: 89 },
     ],
-    createdAt: "2026-04-22",
+    createdAt: "2026-03-28",
   },
 ];
 
@@ -372,7 +391,7 @@ export const collections: Collection[] = [
   {
     id: "gid://local/Collection/1",
     handle: "all",
-    title: "Shop all",
+    title: "Catalog",
     description: "The complete catalogue, most recent first.",
     image: null,
     productHandles: products.map((p) => p.handle),
@@ -390,8 +409,8 @@ export const collections: Collection[] = [
   {
     id: "gid://local/Collection/3",
     handle: "best-sellers",
-    title: "Most reordered",
-    description: "The things people come back for.",
+    title: "Most wanted",
+    description: "The references people come back for.",
     image: null,
     productHandles: products
       .filter((p) => p.tags.includes("best-seller"))
@@ -399,22 +418,24 @@ export const collections: Collection[] = [
   },
   {
     id: "gid://local/Collection/4",
-    handle: "home",
-    title: "Home",
-    description: "For the rooms you actually sit in.",
+    handle: "automatics",
+    title: "Automatics",
+    description: "Self-winding movements, no battery to replace.",
     image: null,
     productHandles: products
-      .filter((p) => p.tags.includes("home") || p.tags.includes("kitchen"))
+      .filter(
+        (p) => p.tags.includes("automatic") || p.tags.includes("mechanical"),
+      )
       .map((p) => p.handle),
   },
   {
     id: "gid://local/Collection/5",
-    handle: "desk",
-    title: "Desk",
-    description: "Where the working day happens.",
+    handle: "divers",
+    title: "Divers",
+    description: "200m and up, with a bezel that only turns one way.",
     image: null,
     productHandles: products
-      .filter((p) => p.tags.includes("desk"))
+      .filter((p) => p.tags.includes("diver"))
       .map((p) => p.handle),
   },
   {
@@ -434,81 +455,89 @@ export const pages: Page[] = [
     handle: "about",
     title: "Our standard",
     bodyHtml: `
-      <p>Cartely started because we kept buying the same category of object twice — once cheap, once properly — and got tired of the first purchase.</p>
-      <p>Every product listed here has been used by someone on the team for at least three months before it goes live. Not photographed, not unboxed: used. If it chips, wobbles, fades, or quietly annoys, it does not make the catalogue.</p>
-      <h2>Why the catalogue is small</h2>
-      <p>About a hundred products, and that is the ceiling. A larger range would mean listing things we have not lived with, which is the whole thing we are trying to avoid.</p>
-      <h2>Repair before replacement</h2>
-      <p>We keep spares for anything with a moving part or a consumable — cords, switches, lids, straps. Email us with a photo and we will send the part rather than a whole new unit.</p>
+      <p>Cartely started because buying a mechanical watch under €1000 usually means trusting a spec sheet nobody verified.</p>
+      <h2>Every watch is timed before it ships</h2>
+      <p>We put each piece on a timegrapher, log the daily rate in six positions, and regulate anything outside spec. The measured rate goes in the box on a printed card, with the date and the initials of whoever did it.</p>
+      <h2>The listings say what matters</h2>
+      <p>Movement, case diameter, lug-to-lug, thickness, lug width, crystal, and real water resistance. Lug-to-lug is the number that decides whether a watch fits your wrist, and almost nobody publishes it.</p>
+      <h2>Servicing stays here</h2>
+      <p>Movement work is done in-house in Sofia, not shipped to a third party. A full service is four to six weeks and we quote before touching anything.</p>
     `,
   },
   {
     handle: "shipping",
     title: "Shipping",
     bodyHtml: `
-      <p>Orders placed before 14:00 ET ship the same working day.</p>
+      <p>Orders placed before 14:00 EET ship the same working day.</p>
       <h2>Rates</h2>
       <ul>
-        <li>Standard, 2–4 working days — $6.50, free over $75</li>
-        <li>Express, next working day — $18</li>
-        <li>Canada, 5–8 working days — $22</li>
+        <li>Bulgaria, 1–2 working days — €4, free over €150</li>
+        <li>EU standard, 2–4 working days — €9, free over €150</li>
+        <li>EU express, next working day — €22</li>
+        <li>UK and Switzerland, 3–6 working days — €26 plus duties</li>
       </ul>
-      <p>Every order ships tracked. You get the number by email as soon as the label is printed, not when the parcel is scanned.</p>
-      <h2>Larger items</h2>
-      <p>Furniture and lighting go by pallet courier and take 5–10 working days. The carrier calls to arrange a window rather than leaving a card.</p>
+      <p>Everything ships tracked and insured for the full order value. You get the tracking number when the label is printed, not when the parcel is scanned.</p>
+      <h2>Bracelet sizing</h2>
+      <p>Leave your wrist measurement in the order note and we size the bracelet before it goes out. Removed links ship with the watch.</p>
     `,
   },
   {
     handle: "returns",
     title: "Returns",
     bodyHtml: `
-      <p>Sixty days from delivery. Unused and in its packaging, and we cover the return label.</p>
+      <p>Thirty days from delivery. Unworn, with the box, tags and protective film in place, and we cover the return label.</p>
       <h2>How</h2>
       <p>Email <a href="mailto:hello@cartely.store">hello@cartely.store</a> with your order number. You will get a prepaid label back, usually within a couple of hours during the working week.</p>
-      <h2>Faulty items</h2>
-      <p>No time limit and no need to return it first. Send a photo and we will ship the replacement or the spare part straight away.</p>
+      <h2>Warranty claims</h2>
+      <p>Two years on the movement and case. No need to return it first — send a photo or a short video of the fault and we will tell you whether it is a service job or a replacement.</p>
+      <h2>Sized bracelets</h2>
+      <p>Still returnable. We keep the removed links, so send them back with the watch.</p>
     `,
   },
   {
     handle: "contact",
     title: "Contact",
     bodyHtml: `
-      <p>Weekdays 9–18 ET. A person answers, and you get their name.</p>
+      <p>Weekdays 9–18 EET. A person answers, and you get their name.</p>
       <ul>
         <li>Email — <a href="mailto:hello@cartely.store">hello@cartely.store</a></li>
-        <li>Phone — +1 (555) 018-4420</li>
-        <li>Post — Unit 4, 118 Mercer Street, New York, NY 10012</li>
+        <li>Phone — +359 2 491 0180</li>
+        <li>Workshop — bul. Vitosha 24, 1000 Sofia, Bulgaria</li>
       </ul>
       <p>Typical reply time is under four working hours. If it has been longer than a day, the email went astray — send it again.</p>
+      <h2>Before you write about sizing</h2>
+      <p>Measure the flat width across the top of your wrist in millimetres. That number plus the lug-to-lug in the listing tells you whether it fits, and saves a round trip.</p>
     `,
   },
   {
     handle: "faq",
     title: "FAQ",
     bodyHtml: `
-      <h2>Do you restock sold-out items?</h2>
-      <p>Usually, within four to six weeks. The product page shows the expected date once the run is booked.</p>
-      <h2>Can I order a spare part on its own?</h2>
-      <p>Yes, and for the first two years it is free. Email us with the product and the part.</p>
-      <h2>Do you ship outside the US?</h2>
-      <p>Canada, yes. Everywhere else, not yet — the return shipping makes the 60-day policy dishonest, so we would rather wait.</p>
-      <h2>Is the packaging recyclable?</h2>
-      <p>All of it. Paper tape, moulded pulp, no plastic film anywhere in the chain.</p>
+      <h2>Do you restock sold-out references?</h2>
+      <p>Usually within four to six weeks. The product page shows the expected date once the batch is booked.</p>
+      <h2>What daily rate should I expect?</h2>
+      <p>We regulate to within ±10 seconds a day for the NH35 and Miyota movements, and ±7 for the Seagull automatics. The card in the box has the measured figure, not the spec figure.</p>
+      <h2>Can you size the bracelet before shipping?</h2>
+      <p>Yes, free. Put your wrist measurement in the order note.</p>
+      <h2>Is the water resistance tested?</h2>
+      <p>Every diver is pressure-tested before it ships. Dress watches are not — 3 ATM means splashes, not swimming, whatever the caseback says.</p>
+      <h2>Do you ship outside the EU?</h2>
+      <p>UK and Switzerland, yes, with duties payable on arrival. Elsewhere not yet — the return shipping would make the 30-day policy dishonest.</p>
     `,
   },
   {
     handle: "materials",
     title: "Materials",
     bodyHtml: `
-      <p>What things are made of, and what that means when they wear.</p>
-      <h2>Stoneware</h2>
-      <p>Fired twice at 1240°C. The body is vitrified, so a chipped glaze does not make the piece porous — it just looks chipped.</p>
-      <h2>Linen</h2>
-      <p>European flax, stonewashed before it ships. Expect it to soften for about ten washes and then stay put.</p>
-      <h2>Unlacquered brass</h2>
-      <p>It will darken, unevenly, wherever you touch it. That is the point. A cut lemon takes it back to bright if you would rather it were not.</p>
-      <h2>Powder-coated steel</h2>
-      <p>Chip-resistant but not chip-proof. We keep touch-up sticks in every colourway.</p>
+      <p>What we do when a watch comes back, and what it costs.</p>
+      <h2>Full service</h2>
+      <p>Movement stripped, cleaned, lubricated, reassembled and regulated. Gaskets replaced, case pressure-tested. Four to six weeks, €120–€180 depending on the calibre. Quoted before we start.</p>
+      <h2>Regulation only</h2>
+      <p>If the watch runs but drifts, this is usually all it needs. Two to five working days, €35, free inside the warranty.</p>
+      <h2>Crystal and gasket replacement</h2>
+      <p>Sapphire and hesalite both stocked for every reference we sell. €45 fitted, including a pressure test.</p>
+      <h2>Watches we did not sell you</h2>
+      <p>We take them if the calibre is one we stock parts for — the Seiko NH series, Miyota 8 and 9 series, and the Seagull ST movements. Anything else, we will say no rather than guess.</p>
     `,
   },
   {
@@ -534,7 +563,7 @@ export const pages: Page[] = [
       <h2>Orders</h2>
       <p>A confirmation email is an acknowledgement, not acceptance. If something is mispriced or out of stock we will tell you and refund in full before shipping.</p>
       <h2>Pricing</h2>
-      <p>Prices are in USD and exclude sales tax, which is calculated at checkout based on your delivery address.</p>
+      <p>Prices are in EUR and include Bulgarian VAT. For deliveries outside the EU, VAT is deducted at checkout and local duties become payable on arrival.</p>
       <h2>Liability</h2>
       <p>Our liability is limited to the value of the order. Nothing here affects your statutory rights.</p>
     `,

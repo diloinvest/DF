@@ -8,86 +8,92 @@
 
 export const site = {
   name: "Cartely",
-  tagline: "Everyday objects, considered.",
+  tagline: "Watches",
   description:
-    "Cartely is a small catalogue of home and desk objects chosen for how they wear over years, not seasons.",
-  currencyCode: "USD",
+    "Cartely is a watch shop — automatics, chronographs, divers and dress pieces, listed with the specs that actually matter.",
+  currencyCode: "EUR",
   locale: "en",
   email: "hello@cartely.store",
-  phone: "+1 (555) 018-4420",
-  address: "Unit 4, 118 Mercer Street, New York, NY 10012",
+  phone: "+359 2 491 0180",
+  address: "bul. Vitosha 24, 1000 Sofia, Bulgaria",
 } as const;
 
+/** Оригиналът няма лента най-горе — стои изключена, но е готова за пускане. */
 export const announcement = {
-  enabled: true,
-  text: "Free shipping on orders over $75 — delivered in 2–4 working days",
+  enabled: false,
+  text: "Free shipping on orders over €150 — delivered in 2–4 working days",
   linkLabel: "Shipping info",
   linkHref: "/pages/shipping",
 } as const;
 
 export const mainNav = [
-  { label: "Shop all", href: "/collections/all" },
-  { label: "New in", href: "/collections/new-in" },
-  { label: "Home", href: "/collections/home" },
-  { label: "Desk", href: "/collections/desk" },
-  { label: "Sale", href: "/collections/sale" },
+  { label: "Home", href: "/" },
+  { label: "Catalog", href: "/collections/all" },
+  { label: "Contact", href: "/pages/contact" },
 ] as const;
 
+/**
+ * Валутата в header-а е дисплей, не превключвател — оригиналът показва
+ * "EUR ⌄". Реалната смяна на валута идва от Shopify Markets.
+ */
+export const currencies = ["EUR", "USD", "GBP", "BGN"] as const;
+
+/**
+ * Hero-то в оригинала е само изображение, пълна ширина, без текст върху него.
+ * Затова `heading` е празен — сложи текст тук и overlay-ът се появява.
+ */
 export const hero = {
-  eyebrow: "New season",
-  heading: "Objects that earn their place",
-  body: "A tight catalogue of home and desk pieces. No seasonal churn, no filler — everything here is meant to be used daily and kept for years.",
-  primaryCta: { label: "Shop the collection", href: "/collections/all" },
-  secondaryCta: { label: "What's new", href: "/collections/new-in" },
+  heading: "",
+  body: "",
+  cta: { label: "", href: "/collections/all" },
   image: "/images/hero.svg",
-  imageAlt:
-    "Stacked ceramic vessels and a folded linen throw arranged on a pale surface",
+  imageAlt: "Rose gold open-heart automatic watch on a dark marble surface",
 } as const;
 
 export const usps = [
   {
-    title: "Free shipping over $75",
-    body: "Tracked delivery in 2–4 working days, anywhere in the continental US.",
+    title: "Free shipping over €150",
+    body: "Tracked delivery in 2–4 working days across the EU.",
     icon: "truck",
   },
   {
-    title: "60-day returns",
-    body: "Unused and in its packaging? Send it back, we cover the return label.",
+    title: "30-day returns",
+    body: "Unworn, with the tags and box? Send it back, we cover the label.",
     icon: "return",
   },
   {
-    title: "Made to last",
-    body: "Every piece is spec'd for repair, not replacement. Spares kept in stock.",
+    title: "2-year warranty",
+    body: "Movement and case covered. Servicing handled in-house, not shipped abroad.",
     icon: "shield",
   },
   {
     title: "Talk to a human",
-    body: "Weekdays 9–18 ET. No bots, no ticket queue — you get a name.",
+    body: "Weekdays 9–18 EET. No bots, no ticket queue — you get a name.",
     icon: "chat",
   },
 ] as const;
 
 export const featuredCollection = {
   handle: "new-in",
-  heading: "New in",
-  body: "Twelve pieces added this month, made in runs small enough that we know who built them.",
-  ctaLabel: "View all new arrivals",
+  heading: "Watches example products",
+  body: "",
+  ctaLabel: "View all",
 } as const;
 
 export const bestSellers = {
   handle: "best-sellers",
-  heading: "Most reordered",
-  body: "The things people come back for.",
+  heading: "Most wanted",
+  body: "The references people come back for.",
   ctaLabel: "Shop best sellers",
 } as const;
 
 export const editorial = {
   eyebrow: "Our standard",
-  heading: "We stock about a hundred things. That is on purpose.",
-  body: "Every product here has been used by someone on the team for at least three months before it goes live. If it chips, wobbles, fades or annoys, it does not make the catalogue. That is the whole selection process.",
-  cta: { label: "How we choose", href: "/pages/about" },
+  heading: "Every watch is opened, timed and regulated before it ships.",
+  body: "We check the movement on a timegrapher, log the daily rate, and regulate anything outside spec. The measured rate goes in the box on a printed card. No watch leaves here on the manufacturer's word alone.",
+  cta: { label: "How we check", href: "/pages/about" },
   image: "/images/editorial.svg",
-  imageAlt: "A workbench with tools and a half-assembled desk lamp",
+  imageAlt: "A watchmaker's bench with a movement holder and loupe",
 } as const;
 
 export const testimonials = {
@@ -95,19 +101,19 @@ export const testimonials = {
   items: [
     {
       quote:
-        "Third order this year. The ceramics have been through a dishwasher maybe two hundred times and still look new.",
+        "Arrived running +2 seconds a day with the timing card in the box. Nobody else bothers to do that at this price.",
       author: "Marion K.",
       meta: "Verified buyer",
     },
     {
       quote:
-        "I emailed about a cracked lid on a Sunday and had a replacement shipped Monday morning. No forms, no photos demanded.",
+        "Bracelet was two links too long. They sized it before shipping because I mentioned my wrist size in the order note.",
       author: "Devon R.",
       meta: "Verified buyer",
     },
     {
       quote:
-        "The catalogue is small enough that I actually read all of it. Refreshing after scrolling ten thousand near-identical listings elsewhere.",
+        "The listings say the movement, the lug width and the actual lug-to-lug. That alone put them ahead of every other shop I looked at.",
       author: "Ana P.",
       meta: "Verified buyer",
     },
@@ -116,7 +122,7 @@ export const testimonials = {
 
 export const newsletter = {
   heading: "One email a month",
-  body: "New arrivals, restocks, and the occasional note on how something is made. Unsubscribe in one click.",
+  body: "New arrivals, restocks, and the occasional note on a movement worth knowing about. Unsubscribe in one click.",
   placeholder: "your@email.com",
   buttonLabel: "Subscribe",
   successMessage: "You're on the list. Check your inbox to confirm.",
@@ -126,15 +132,15 @@ export const newsletter = {
 
 export const footer = {
   blurb:
-    "A small catalogue of home and desk objects, chosen for how they wear over years.",
+    "A watch shop that lists the movement, the lug width and the measured daily rate.",
   columns: [
     {
       heading: "Shop",
       links: [
-        { label: "All products", href: "/collections/all" },
+        { label: "Catalog", href: "/collections/all" },
         { label: "New in", href: "/collections/new-in" },
-        { label: "Home", href: "/collections/home" },
-        { label: "Desk", href: "/collections/desk" },
+        { label: "Automatics", href: "/collections/automatics" },
+        { label: "Divers", href: "/collections/divers" },
         { label: "Sale", href: "/collections/sale" },
       ],
     },
@@ -151,7 +157,7 @@ export const footer = {
       heading: "About",
       links: [
         { label: "Our standard", href: "/pages/about" },
-        { label: "Materials", href: "/pages/materials" },
+        { label: "Servicing", href: "/pages/materials" },
         { label: "Privacy", href: "/pages/privacy" },
         { label: "Terms", href: "/pages/terms" },
       ],

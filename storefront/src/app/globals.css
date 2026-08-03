@@ -5,32 +5,43 @@
  * Смяна на цвят, шрифт или радиус става САМО тук; нито един компонент
  * не съдържа hardcoded hex стойност.
  *
- * Стойностите идват от Приложение А на docs/prompts/shopify-clone-cartely.md
- * (fallback палитрата), защото оригиналният магазин беше недостъпен при
- * генерирането. Замени ги с реалните, когато ги извлечеш от capture/.
+ * Стойностите са свалени от screenshot на cartely-2.myshopify.com:
+ * тъмен header, светлосива продуктова лента, серифни заглавия, остри ъгли
+ * и почти пълноширок контейнер.
  */
 :root {
   --color-bg: #ffffff;
-  --color-surface: #f6f6f4;
-  --color-surface-strong: #ecece8;
+  --color-surface: #e8e8e8;
+  --color-surface-strong: #dcdcdc;
   --color-text: #1a1a1a;
   --color-text-muted: #6b6b6b;
   --color-accent: #1a1a1a;
-  --color-accent-hover: #333333;
+  --color-accent-hover: #383838;
   --color-accent-text: #ffffff;
-  --color-border: #e5e5e2;
+  --color-border: #d8d8d8;
   --color-sale: #b23b3b;
   --color-success: #2f7a4f;
 
-  --font-heading: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    sans-serif;
+  /* Тъмната лента най-горе е отделна повърхност — има си собствени токени. */
+  --color-header-bg: #1c1c1c;
+  --color-header-text: #ffffff;
+  --color-header-muted: #b8b8b8;
+
+  /*
+   * Заглавията в оригинала са висококонтрастен сериф (Playfair-подобен).
+   * Тук стои системен fallback, за да няма мрежова заявка на build —
+   * виж README за качването на истинския шрифт.
+   */
+  --font-heading: "Playfair Display", "Georgia", "Times New Roman", serif;
   --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     sans-serif;
 
-  --radius: 0.375rem;
-  --radius-lg: 0.75rem;
+  /* Оригиналът е с остри ъгли навсякъде. */
+  --radius: 0px;
+  --radius-lg: 0px;
   --shadow-overlay: 0 10px 40px rgb(0 0 0 / 0.16);
-  --container: 1280px;
+  --container: 1600px;
+  --header-height: 60px;
 }
 
 @theme inline {
@@ -45,6 +56,9 @@
   --color-border: var(--color-border);
   --color-sale: var(--color-sale);
   --color-success: var(--color-success);
+  --color-header-bg: var(--color-header-bg);
+  --color-header-text: var(--color-header-text);
+  --color-header-muted: var(--color-header-muted);
 
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
@@ -58,12 +72,25 @@ body {
   line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-h4 {
+/*
+ * В @layer base, за да могат Tailwind утилитите да го надпишат.
+ * Без слоя нелеерван селектор като `h3` бие всяка utility класа.
+ */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+}
+
+/* Логото и заглавията на секции ползват серифа; продуктовите заглавия — не. */
+.font-heading {
   font-family: var(--font-heading);
-  text-wrap: balance;
 }
 
 /* Видим focus навсякъде — изискване от a11y проверката. */

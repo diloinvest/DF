@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { Container } from "@/components/ui/Container";
 import { ArrowRightIcon } from "@/components/ui/Icons";
+import { clsx } from "@/lib/clsx";
 import type { Product } from "@/lib/types";
 
 export function CollectionSection({
@@ -12,6 +13,7 @@ export function CollectionSection({
   ctaLabel,
   products,
   priorityCount = 0,
+  tone = "surface",
 }: {
   heading: string;
   body?: string;
@@ -19,15 +21,21 @@ export function CollectionSection({
   ctaLabel: string;
   products: Product[];
   priorityCount?: number;
+  /** `surface` е сивата лента от оригинала; `plain` е на бял фон. */
+  tone?: "surface" | "plain";
 }) {
   if (products.length === 0) return null;
 
   return (
-    <section className="border-b border-[var(--color-border)]">
-      <Container className="py-14 lg:py-20">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-xl">
-            <h2 className="text-2xl font-semibold sm:text-3xl">{heading}</h2>
+    <section
+      className={clsx(
+        tone === "surface" ? "bg-[var(--color-surface)]" : "bg-[var(--color-bg)]",
+      )}
+    >
+      <Container className="py-10 lg:py-14">
+        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold sm:text-4xl">{heading}</h2>
             {body ? (
               <p className="mt-2 text-[var(--color-text-muted)]">{body}</p>
             ) : null}

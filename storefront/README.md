@@ -47,6 +47,24 @@ Develop apps → Create an app → Storefront API → Install. Нужни scope-
 CSS custom properties, копито е в `site.ts`. Това е разликата спрямо
 Shopify темата — сменяш палитрата на едно място и целият магазин я поема.
 
+### Истинският серифен шрифт
+
+`--font-heading` сочи към системен fallback, защото build средата няма
+достъп до Google Fonts. За да сложиш Playfair Display (или каквото ползва
+оригиналът):
+
+```bash
+npm install @fontsource/playfair-display
+```
+
+```ts
+// src/app/layout.tsx
+import "@fontsource/playfair-display/700.css";
+```
+
+Стойността в `globals.css` вече го чака първи в стека — не се пипа нищо
+друго.
+
 ### Добавяне на нова секция на началната страница
 
 1. Направи компонента в `src/components/sections/`.

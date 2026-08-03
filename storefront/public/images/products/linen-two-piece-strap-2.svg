@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="Linen Two-Piece Strap">
+  <rect width="1000" height="1250" fill="#e3e1da" />
+  <g transform="rotate(-11.9 500 595)">
+    <rect x="405" y="285" width="190" height="620" rx="26" fill="#2f2c28" />
+    <rect x="427" y="307" width="146" height="576" rx="18" fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="14 12" opacity="0.35" />
+    <rect x="456" y="549" width="88" height="92" rx="10" fill="none" stroke="#d8dade" stroke-width="12" />
+    <line x1="500" y1="549" x2="500" y2="641" stroke="#d8dade" stroke-width="9" />
+  </g>
+  <ellipse cx="500" cy="945" rx="200" ry="26" fill="#000000" opacity="0.08" />
+</svg>

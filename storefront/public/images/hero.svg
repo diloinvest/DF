@@ -1,10 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1050" width="1400" height="1050" role="img" aria-label="Ceramic vessels and folded linen">
-  <rect width="1400" height="1050" fill="#ecece8" />
-  <rect x="1111" y="644" width="178" height="333" rx="18" fill="#dcd9d0" />
-  <rect x="706" y="493" width="377" height="478" rx="999" fill="#dcd9d0" />
-  <rect x="758" y="577" width="296" height="452" rx="999" fill="#d6d8d3" />
-  <rect x="437" y="564" width="245" height="375" rx="18" fill="#dfe1de" />
-  <rect x="564" y="793" width="370" height="219" rx="18" fill="#e8e4dc" />
-  <rect x="582" y="759" width="213" height="198" rx="999" fill="#dcd9d0" />
-  <rect x="0" y="960" width="1400" height="90" fill="#d9d9d4" opacity="0.55" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 900" width="2400" height="900" role="img" aria-label="Rose gold automatic watch on a dark surface">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3a3229" />
+      <stop offset="100%" stop-color="#141210" />
+    </radialGradient>
+    <linearGradient id="dialGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3f75" />
+      <stop offset="100%" stop-color="#0d1f3d" />
+    </linearGradient>
+  </defs>
+  <rect width="2400" height="900" fill="url(#glow)" />
+  <ellipse cx="1200" cy="830" rx="510" ry="46" fill="#000000" opacity="0.45" />
+  <rect x="1010" y="0" width="380" height="200" rx="26" fill="#2a2118" />
+  <rect x="1010" y="700" width="380" height="200" rx="26" fill="#2a2118" />
+  <rect x="1530" y="416" width="46" height="68" rx="10" fill="#9a6a47" />
+  <circle cx="1200" cy="450" r="340" fill="#c8926b" />
+  <circle cx="1200" cy="450" r="328" fill="#e8c3a6" />
+  <circle cx="1200" cy="450" r="310" fill="#9a6a47" />
+  <circle cx="1200" cy="450" r="300" fill="url(#dialGrad)" />
+  <line x1="1200.0" y1="236.0" x2="1200.0" y2="178.0" stroke="#e8c3a6" stroke-width="16" stroke-linecap="round" />
+  <line x1="1317.0" y1="247.4" x2="1336.0" y2="214.4" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="1402.6" y1="333.0" x2="1435.6" y2="314.0" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="1414.0" y1="450.0" x2="1472.0" y2="450.0" stroke="#e8c3a6" stroke-width="16" stroke-linecap="round" />
+  <line x1="1402.6" y1="567.0" x2="1435.6" y2="586.0" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="1317.0" y1="652.6" x2="1336.0" y2="685.6" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="1200.0" y1="664.0" x2="1200.0" y2="722.0" stroke="#e8c3a6" stroke-width="16" stroke-linecap="round" />
+  <line x1="1083.0" y1="652.6" x2="1064.0" y2="685.6" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="997.4" y1="567.0" x2="964.4" y2="586.0" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="986.0" y1="450.0" x2="928.0" y2="450.0" stroke="#e8c3a6" stroke-width="16" stroke-linecap="round" />
+  <line x1="997.4" y1="333.0" x2="964.4" y2="314.0" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <line x1="1083.0" y1="247.4" x2="1064.0" y2="214.4" stroke="#e8c3a6" stroke-width="9" stroke-linecap="round" />
+  <circle cx="1200" cy="585" r="62" fill="#0d1f3d" />
+  <circle cx="1200" cy="585" r="62" fill="none" stroke="#e8c3a6" stroke-width="7" />
+  <circle cx="1200" cy="585" r="26" fill="#c8926b" opacity="0.7" />
+  <g transform="rotate(318 1200 450)"><rect x="1189" y="300" width="22" height="159" rx="11" fill="#f2efe8" /></g>
+  <g transform="rotate(58 1200 450)"><rect x="1193" y="222" width="14" height="237" rx="7" fill="#f2efe8" /></g>
+  <circle cx="1200" cy="450" r="19" fill="#e8c3a6" />
+  <path d="M 945 360 A 300 300 0 0 1 1215 165 L 1020 525 Z" fill="#ffffff" opacity="0.08" />
 </svg>

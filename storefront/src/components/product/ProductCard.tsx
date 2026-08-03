@@ -74,7 +74,8 @@ export function ProductCard({
       </div>
 
       <div className="mt-3 flex flex-1 flex-col gap-1">
-        <h3 className="text-[0.95rem] leading-snug font-medium">
+        {/* Продуктовите заглавия са на body шрифта — серифът е за секциите. */}
+        <h3 className="font-[family-name:var(--font-body)] text-[0.95rem] leading-snug font-medium">
           <Link href={`/products/${product.handle}`} className="after:absolute after:inset-0">
             {product.title}
           </Link>

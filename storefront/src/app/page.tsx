@@ -25,7 +25,7 @@ export default async function HomePage() {
         href={`/collections/${featuredCollection.handle}`}
         ctaLabel={featuredCollection.ctaLabel}
         products={featuredProducts}
-        priorityCount={2}
+        priorityCount={4}
       />
     ),
     editorial: <Editorial key="editorial" />,
@@ -37,6 +37,7 @@ export default async function HomePage() {
         href={`/collections/${bestSellers.handle}`}
         ctaLabel={bestSellers.ctaLabel}
         products={bestSellerProducts}
+        tone="plain"
       />
     ),
     testimonials: <Testimonials key="testimonials" />,

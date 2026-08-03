@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="Arc Desk Lamp">
-  <rect width="1000" height="1250" fill="#e5e0d8" />
-  <circle cx="500" cy="585" r="307" fill="#1a1a1a" opacity="0.100" />
-  <circle cx="500" cy="585" r="206" fill="#1a1a1a" opacity="0.075" />
-  <rect x="335" y="400" width="330" height="370" rx="66" fill="#ffffff" opacity="0.55" />
-  <rect x="370" y="840" width="260" height="6" rx="3" fill="#1a1a1a" opacity="0.12" />
-  <text x="500" y="1160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="34" fill="#6b6b6b">Arc Desk Lamp</text>
-  <text x="500" y="1202" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#6b6b6b" opacity="0.7">View 1</text>
-</svg>
