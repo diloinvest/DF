@@ -1,8 +1,10 @@
 name: storefront
 
 on:
+  # Само default бранча — за всичко останало се грижи pull_request тригерът.
+  # С `branches: ["**"]` всеки push към PR бранч пускаше два еднакви run-а.
   push:
-    branches: ["**"]
+    branches: [master]
     paths:
       - "storefront/**"
       - ".github/workflows/storefront.yml"
@@ -10,6 +12,11 @@ on:
     paths:
       - "storefront/**"
       - ".github/workflows/storefront.yml"
+
+# Нов push към същия бранч отменя предишния run, вместо да чака и двата.
+concurrency:
+  group: storefront-${{ github.ref }}
+  cancel-in-progress: true
 
 defaults:
   run:
