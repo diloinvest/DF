@@ -12,6 +12,30 @@
 
 ---
 
+## 0. Най-бърз старт (от телефона)
+
+Ако вече имаш `ANTHROPIC_API_KEY` и [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/)
+(`winget install --id Cloudflare.cloudflared`), един ред върши всичко:
+
+```powershell
+cd DF\bg-voice
+.\start.ps1
+```
+
+Скриптът създава виртуалната среда при първо пускане, вдига сървъра, отваря
+публичен HTTPS адрес и го изписва в терминала. Отваряш адреса в Safari на
+телефона и говориш.
+
+За по-бърз първи тест (моделът е ~5× по-малък):
+
+```powershell
+.\start.ps1 -Model medium
+```
+
+Останалите точки описват същото на ръка.
+
+---
+
 ## 1. Инсталация (Windows + NVIDIA)
 
 Нужни са ти **Python 3.10+** и актуален NVIDIA драйвер.
@@ -123,6 +147,7 @@ python server.py
 | `TTS_VOICE` | `bg-BG-BorislavNeural` | или `bg-BG-KalinaNeural` (женски) |
 | `TTS_RATE` | `+10%` | скорост на говора |
 | `SYSTEM_PROMPT` | виж `server.py` | инструкциите към Claude |
+| `WHISPER_PRELOAD` | `1` | зарежда модела при старт; `0` = чак при първата заявка |
 | `PORT` | `8000` | |
 
 ### Изцяло локален глас (Piper)

@@ -18,6 +18,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 import anthropic
@@ -61,7 +62,22 @@ SYSTEM_PROMPT = os.getenv(
 Ако потребителят премине на друг език, отговаряй на неговия език.""",
 )
 
-app = FastAPI(title="bg-voice")
+async def _preload():
+    try:
+        await get_whisper()
+    except Exception:  # noqa: BLE001 - логваме, но не спираме сървъра
+        log.exception("Предварителното зареждане на Whisper се провали.")
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # Тегли и зарежда модела още при старта, за да не чака първият говорещ.
+    if os.getenv("WHISPER_PRELOAD", "1") == "1":
+        asyncio.create_task(_preload())
+    yield
+
+
+app = FastAPI(title="bg-voice", lifespan=lifespan)
 
 _whisper = None
 _whisper_lock = asyncio.Lock()
@@ -71,24 +87,30 @@ _claude = anthropic.AsyncAnthropic()
 # --- Реч → текст ----------------------------------------------------------
 
 
+def _load_whisper():
+    from faster_whisper import WhisperModel
+
+    device, compute = WHISPER_DEVICE, WHISPER_COMPUTE
+    try:
+        log.info("Зареждам Whisper %s на %s (%s)...", WHISPER_MODEL, device, compute)
+        return WhisperModel(WHISPER_MODEL, device=device, compute_type=compute)
+    except Exception as exc:  # noqa: BLE001 - искаме всякакъв CUDA проблем
+        if device == "cpu":
+            raise
+        log.warning("GPU не е достъпен (%s). Минавам на CPU с int8.", exc)
+        return WhisperModel(WHISPER_MODEL, device="cpu", compute_type="int8")
+
+
 async def get_whisper():
-    """Зарежда модела при първата заявка; пада към CPU, ако няма GPU."""
+    """Зарежда модела веднъж. Тегленето става в нишка, за да не блокира сървъра."""
     global _whisper
     async with _whisper_lock:
         if _whisper is None:
-            from faster_whisper import WhisperModel
-
-            device, compute = WHISPER_DEVICE, WHISPER_COMPUTE
-            try:
-                log.info("Зареждам Whisper %s на %s (%s)...", WHISPER_MODEL, device, compute)
-                _whisper = WhisperModel(WHISPER_MODEL, device=device, compute_type=compute)
-            except Exception as exc:  # noqa: BLE001 - искаме всякакъв CUDA проблем
-                if device == "cpu":
-                    raise
-                log.warning("GPU не е достъпен (%s). Минавам на CPU с int8.", exc)
-                _whisper = WhisperModel(WHISPER_MODEL, device="cpu", compute_type="int8")
+            _whisper = await asyncio.to_thread(_load_whisper)
             log.info("Whisper е готов.")
     return _whisper
+
+
 
 
 def _transcribe(model, path: str) -> str:
