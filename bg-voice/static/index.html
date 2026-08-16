@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Гласов разговор</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --panel: #1a1a1a;
+    --line: #2b2b2b;
+    --text: #ececec;
+    --muted: #8f8f8f;
+    --accent: #d97757;
+    --user: #232323;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  header h1 { font-size: 16px; font-weight: 600; margin: 0; flex: 1; }
+  select {
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 6px 8px; font-size: 14px;
+  }
+
+  #log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; white-space: pre-wrap; word-wrap: break-word; }
+  .msg.user { align-self: flex-end; background: var(--user); border-bottom-right-radius: 4px; }
+  .msg.bot  { align-self: flex-start; background: var(--panel); border-bottom-left-radius: 4px; }
+  .hint { color: var(--muted); font-size: 14px; text-align: center; margin: auto 0; padding: 0 24px; }
+
+  footer { padding: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  #status { color: var(--muted); font-size: 14px; min-height: 20px; text-align: center; }
+
+  #mic {
+    width: 88px; height: 88px; border-radius: 50%;
+    border: 2px solid var(--line); background: var(--panel);
+    color: var(--text); font-size: 34px; cursor: pointer;
+    display: grid; place-items: center;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease;
+    touch-action: none; user-select: none;
+  }
+  #mic:active { transform: scale(.94); }
+  #mic.rec { background: var(--accent); border-color: var(--accent); }
+  #mic.rec.loud { box-shadow: 0 0 0 12px rgba(217, 119, 87, .18); }
+  #mic:disabled { opacity: .45; cursor: default; }
+
+  .row { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--muted); }
+  .row button {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Гласов разговор</h1>
+  <select id="mode">
+    <option value="hands">Свободни ръце</option>
+    <option value="ptt">Задръж за говор</option>
+  </select>
+</header>
+
+<div id="log"><p class="hint">Натисни микрофона и говори на български.</p></div>
+
+<footer>
+  <div id="status">Готов</div>
+  <button id="mic" aria-label="Говори">🎙️</button>
+  <div class="row">
+    <button id="clear">Изчисти разговора</button>
+  </div>
+</footer>
+
+<audio id="player" playsinline></audio>
+
+<script>
+const logEl = document.getElementById('log');
+const statusEl = document.getElementById('status');
+const micEl = document.getElementById('mic');
+const modeEl = document.getElementById('mode');
+const player = document.getElementById('player');
+
+let history = [];
+let stream, recorder, chunks = [], audioCtx, analyser, rafId;
+let recording = false, busy = false, sawSpeech = false, quietSince = 0, startedAt = 0;
+
+const SILENCE_RMS = 0.012;   // праг за "тишина"
+const SILENCE_MS = 1100;     // колко тишина спира записа
+const MIN_MS = 600;          // по-кратко от това не се изпраща
+
+function setStatus(t) { statusEl.textContent = t; }
+
+function addMsg(text, who) {
+  const hint = logEl.querySelector('.hint');
+  if (hint) hint.remove();
+  const el = document.createElement('div');
+  el.className = 'msg ' + who;
+  el.textContent = text;
+  logEl.appendChild(el);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function pickMime() {
+  for (const m of ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']) {
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported(m)) return m;
+  }
+  return '';
+}
+
+async function getStream() {
+  if (stream && stream.active) return stream;
+  stream = await navigator.mediaDevices.getUserMedia({
+    audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+  });
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 1024;
+  audioCtx.createMediaStreamSource(stream).connect(analyser);
+  return stream;
+}
+
+function watchLevel() {
+  const buf = new Float32Array(analyser.fftSize);
+  const tick = () => {
+    if (!recording) return;
+    analyser.getFloatTimeDomainData(buf);
+    let sum = 0;
+    for (const v of buf) sum += v * v;
+    const rms = Math.sqrt(sum / buf.length);
+
+    micEl.classList.toggle('loud', rms > SILENCE_RMS * 2);
+
+    if (modeEl.value === 'hands') {
+      const now = performance.now();
+      if (rms > SILENCE_RMS) { sawSpeech = true; quietSince = 0; }
+      else if (sawSpeech) {
+        if (!quietSince) quietSince = now;
+        else if (now - quietSince > SILENCE_MS) { stopRec(); return; }
+      }
+    }
+    rafId = requestAnimationFrame(tick);
+  };
+  rafId = requestAnimationFrame(tick);
+}
+
+async function startRec() {
+  if (recording || busy) return;
+  try {
+    await getStream();
+  } catch (e) {
+    setStatus('Няма достъп до микрофона. Провери разрешенията и че отваряш през HTTPS.');
+    return;
+  }
+  if (audioCtx.state === 'suspended') await audioCtx.resume();
+
+  chunks = [];
+  sawSpeech = false;
+  quietSince = 0;
+  startedAt = performance.now();
+
+  const mime = pickMime();
+  recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+  recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+  recorder.onstop = onRecStop;
+  recorder.start();
+
+  recording = true;
+  micEl.classList.add('rec');
+  setStatus(modeEl.value === 'hands' ? 'Слушам… спри да говориш, за да изпратя' : 'Слушам… пусни бутона');
+  watchLevel();
+}
+
+function stopRec() {
+  if (!recording) return;
+  recording = false;
+  cancelAnimationFrame(rafId);
+  micEl.classList.remove('rec', 'loud');
+  try { recorder.stop(); } catch {}
+}
+
+async function onRecStop() {
+  const tooShort = performance.now() - startedAt < MIN_MS;
+  const blob = new Blob(chunks, { type: recorder.mimeType || 'audio/webm' });
+  if (tooShort || blob.size < 2000) { setStatus('Твърде кратко — опитай пак'); return; }
+
+  busy = true;
+  micEl.disabled = true;
+  setStatus('Разпознавам…');
+
+  try {
+    const fd = new FormData();
+    const ext = blob.type.includes('mp4') ? 'mp4' : 'webm';
+    fd.append('audio', blob, 'speech.' + ext);
+    fd.append('history', JSON.stringify(history));
+
+    const res = await fetch('/api/turn', { method: 'POST', body: fd });
+    if (!res.ok) throw new Error(await res.text());
+    const { user, reply } = await res.json();
+
+    if (!user) { setStatus('Не чух нищо — опитай пак'); return; }
+    addMsg(user, 'user');
+    history.push({ role: 'user', content: user });
+
+    addMsg(reply, 'bot');
+    history.push({ role: 'assistant', content: reply });
+
+    setStatus('Говоря…');
+    await speak(reply);
+    setStatus('Готов');
+
+    if (modeEl.value === 'hands') setTimeout(startRec, 250);
+  } catch (err) {
+    console.error(err);
+    setStatus('Грешка: ' + err.message);
+  } finally {
+    busy = false;
+    micEl.disabled = false;
+  }
+}
+
+async function speak(text) {
+  const res = await fetch('/api/tts', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text })
+  });
+  if (!res.ok) return;
+  const url = URL.createObjectURL(await res.blob());
+  player.src = url;
+  try { await player.play(); } catch {}
+  await new Promise(done => {
+    player.onended = done;
+    player.onerror = done;
+  });
+  URL.revokeObjectURL(url);
+}
+
+// --- Управление на бутона -------------------------------------------------
+
+micEl.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  // iOS иска възпроизвеждането да тръгне от жест — "отключваме" плеъра.
+  player.play().catch(() => {});
+  player.pause();
+  if (modeEl.value === 'ptt') startRec();
+});
+
+micEl.addEventListener('pointerup', e => {
+  e.preventDefault();
+  if (modeEl.value === 'ptt') stopRec();
+  else recording ? stopRec() : startRec();
+});
+
+micEl.addEventListener('pointercancel', () => { if (modeEl.value === 'ptt') stopRec(); });
+
+document.getElementById('clear').addEventListener('click', () => {
+  history = [];
+  logEl.innerHTML = '<p class="hint">Натисни микрофона и говори на български.</p>';
+  setStatus('Готов');
+});
+
+modeEl.addEventListener('change', () => { stopRec(); setStatus('Готов'); });
+</script>
+</body>
+</html>

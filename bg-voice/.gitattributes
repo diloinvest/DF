@@ -1,0 +1,4 @@
+# Windows скриптовете трябва да се появят с CRLF при клониране,
+# иначе cmd.exe се държи странно с .bat файлове.
+*.bat text eol=crlf
+*.ps1 text eol=crlf
