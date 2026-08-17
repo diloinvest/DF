@@ -101,10 +101,12 @@ const player = document.getElementById('player');
 let history = [];
 let stream, recorder, chunks = [], audioCtx, analyser, rafId;
 let recording = false, busy = false, sawSpeech = false, quietSince = 0, startedAt = 0;
+let loopOn = false;          // включен ли е цикълът "свободни ръце"
 
 const SILENCE_RMS = 0.012;   // праг за "тишина"
 const SILENCE_MS = 1100;     // колко тишина спира записа
 const MIN_MS = 600;          // по-кратко от това не се изпраща
+const MAX_MS = 30000;        // таван — за да не остане микрофонът отворен завинаги
 
 function setStatus(t) { statusEl.textContent = t; }
 
@@ -148,8 +150,12 @@ function watchLevel() {
 
     micEl.classList.toggle('loud', rms > SILENCE_RMS * 2);
 
+    const now = performance.now();
+
+    // Таван на записа — иначе в пълна тишина микрофонът стои отворен без край.
+    if (now - startedAt > MAX_MS) { stopRec(); return; }
+
     if (modeEl.value === 'hands') {
-      const now = performance.now();
       if (rms > SILENCE_RMS) { sawSpeech = true; quietSince = 0; }
       else if (sawSpeech) {
         if (!quietSince) quietSince = now;
@@ -226,7 +232,8 @@ async function onRecStop() {
     await speak(reply);
     setStatus('Готов');
 
-    if (modeEl.value === 'hands') setTimeout(startRec, 250);
+    // Продължаваме цикъла само ако потребителят не го е спрял междувременно.
+    if (loopOn && modeEl.value === 'hands') setTimeout(startRec, 250);
   } catch (err) {
     console.error(err);
     setStatus('Грешка: ' + err.message);
@@ -257,6 +264,8 @@ async function speak(text) {
 
 micEl.addEventListener('pointerdown', e => {
   e.preventDefault();
+  // Гарантира, че pointerup ще дойде тук дори ако пръстът се измести от бутона.
+  try { micEl.setPointerCapture(e.pointerId); } catch {}
   // iOS иска възпроизвеждането да тръгне от жест — "отключваме" плеъра.
   player.play().catch(() => {});
   player.pause();
@@ -265,8 +274,16 @@ micEl.addEventListener('pointerdown', e => {
 
 micEl.addEventListener('pointerup', e => {
   e.preventDefault();
-  if (modeEl.value === 'ptt') stopRec();
-  else recording ? stopRec() : startRec();
+  if (modeEl.value === 'ptt') { stopRec(); return; }
+
+  if (recording || loopOn) {   // спираме целия цикъл
+    loopOn = false;
+    stopRec();
+    setStatus('Спрян');
+  } else {
+    loopOn = true;
+    startRec();
+  }
 });
 
 micEl.addEventListener('pointercancel', () => { if (modeEl.value === 'ptt') stopRec(); });
@@ -277,7 +294,7 @@ document.getElementById('clear').addEventListener('click', () => {
   setStatus('Готов');
 });
 
-modeEl.addEventListener('change', () => { stopRec(); setStatus('Готов'); });
+modeEl.addEventListener('change', () => { loopOn = false; stopRec(); setStatus('Готов'); });
 </script>
 </body>
 </html>
